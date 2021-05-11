@@ -1,13 +1,13 @@
 #include <iostream>
 #include <stdio.h>
-//#include "position.cpp"
-#include "sodoku.cpp"
+#include "sodoku.h"
+#include "SodokuCombinations.cpp"
 
 int main(){
-    Sodoku s;
-    s.printSolvedMatrix(std::cout);//ostream);
+    //Sodoku s;
+    //s.printSolvedMatrix(std::cout);//ostream);
     //std::cout << "test";
-
-
+    SodokuCombinations sc;
+    sc.CreateListWithRamdomGenerations();
     return 0;
 }

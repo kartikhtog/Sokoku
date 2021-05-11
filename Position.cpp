@@ -1,5 +1,5 @@
 #include "Position.h"
-BoxCordinates* PositionConversion::convertTPositionInBox(GridCordinates p, BoxCordinates* b) {
+static BoxCordinates* PositionConversion::convertToPositionInBox(GridCordinates p, BoxCordinates* b) {
     int boxColumnLocation = 0;
     int boxRowLocation = 0;
     if (p.location.column == 0 || p.location.column == 3 || p.location.column == 6 ){
@@ -35,10 +35,9 @@ BoxCordinates* PositionConversion::convertTPositionInBox(GridCordinates p, BoxCo
     // 1 1 2 3
     // 2 4 5 6
     // 3 7 8 9
-    //int box = calculateBoxFromPosition(Position);
 };
 
-int PositionConversion::calculateBoxFromPosition(GridCordinates p){
+static int PositionConversion::calculateBoxFromPosition(GridCordinates p){
     if (p.location.column <= 2){
         if (p.location.row <= 2){
             return 0;

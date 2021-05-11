@@ -1,5 +1,5 @@
-#ifndef SODOKUDEFINATIONS_H
-#define SODOKUDEFINATIONS_H
+#ifndef SODOKU_DEFINATIONS_H
+#define SODOKU_DEFINATIONS_H
 
 union SodokuValue{
     struct {

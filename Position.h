@@ -3,7 +3,18 @@
 union GridCordinates{
     struct {
     unsigned column : 4;
+    /// 0 1 2 3 4 5 6 7 8 , going down
     unsigned row : 4;
+    /// 0
+    /// 1
+    /// 2
+    /// 3
+    /// 4
+    /// 5
+    /// 6
+    /// 7
+    /// 8
+    /// going across
     } location;
     unsigned char storage;
 };
@@ -11,7 +22,13 @@ union GridCordinates{
 union BoxCordinates {
     struct {
         unsigned box:4;
+        /// 0 1 2
+        /// 3 4 5
+        /// 6 7 8
         unsigned positionInBox : 4;
+        /// 0 1 2
+        /// 3 4 5
+        /// 6 7 8
     } location;
     unsigned char storage;
 };
@@ -19,8 +36,8 @@ union BoxCordinates {
 class PositionConversion {
     public:
         /// Returns box cor
-        BoxCordinates* convertTPositionInBox(GridCordinates p, BoxCordinates* b);
-        int calculateBoxFromPosition(GridCordinates p);
+        static BoxCordinates* convertToPositionInBox(GridCordinates p, BoxCordinates* b);
+        static int calculateBoxFromPosition(GridCordinates p);
 };
 
 #endif
