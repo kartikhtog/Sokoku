@@ -29,39 +29,52 @@ void SodokuCombinations::CreateListWithRamdomGenerations(){
     int i;
     //columns
     int j;int k;int l; int m;int n;int o; int p;int q;int r;
-    
-    a = (rand()%3); //aa.location.row = a; 
-    b = (rand()%3)+3; //bb.location.row = b;
-    c = (rand()%3)+6; //cc.location.row = c;
-    while((d = ((rand()%3)  ))==a); //dd.location.row = d;
-    while((e = ((rand()%3)+3))==b); //ee.location.row = e;
-    while((f = ((rand()%3)+6))==c); //ff.location.row = f;
-    g=-1; while(++g == a || g == d); //gg.location.row = g;
-    h=2; while(++h == b || h == e); //hh.location.row = h;
-    i=5; while(++i == c || i == f); //ii.location.row = i;
-    
-    j = (rand()%3); //aa.location.row = a; 
-    while((k = ((rand()%3)  ))==j); //dd.location.row = d;
-    l=-1; while(++l == j || l == k); //gg.location.row = g;
-    
-    m = (rand()%3)+3;// bb.location.row = b;
-    while((n = ((rand()%3)+3))==m); //ee.location.row = e;
-    o=2; while(++o == n || o == m); //hh.location.row = h;
-    
-    p = (rand()%3)+6; //cc.location.row = c;
-    while((q = ((rand()%3)+6))==p); //ff.location.row = f;
-    r=5; while(++r == q || r == p); //ii.location.row = i;
+        /// one list
+    GridCordinates grid0;
+    GridCordinates grid1;
+    GridCordinates grid2;
+    GridCordinates grid3;
+    GridCordinates grid4;
+    GridCordinates grid5;
+    GridCordinates grid6;
+    GridCordinates grid7;
+    GridCordinates grid8;
 
-    /// one list
-    GridCordinates grid0; grid0.location.column = j; grid0.location.row = a; BoxCordinates* box0 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid0,box0);
-    GridCordinates grid1; grid1.location.column = k; grid1.location.row = b; BoxCordinates* box1 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid1,box1);
-    GridCordinates grid2; grid2.location.column = l; grid2.location.row = c; BoxCordinates* box2 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid2,box2);
-    GridCordinates grid3; grid3.location.column = m; grid3.location.row = d; BoxCordinates* box3 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid3,box3);
-    GridCordinates grid4; grid4.location.column = n; grid4.location.row = e; BoxCordinates* box4 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid4,box4);
-    GridCordinates grid5; grid5.location.column = o; grid5.location.row = f; BoxCordinates* box5 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid5,box5);
-    GridCordinates grid6; grid6.location.column = p; grid6.location.row = g; BoxCordinates* box6 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid6,box6);
-    GridCordinates grid7; grid7.location.column = q; grid7.location.row = h; BoxCordinates* box7 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid7,box7);
-    GridCordinates grid8; grid8.location.column = r; grid8.location.row = i; BoxCordinates* box8 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid8,box8);
+    a = (rand()%3); grid0.location.row = a; // row 0 -2
+    b = (rand()%3)+3; grid1.location.row = d; // row 3 -5
+    c = (rand()%3)+6; grid2.location.row = h; // row 7 -8
+    
+    while((d = ((rand()%3)  ))==a); grid0.location.row = b; // row 0 -2
+    while((e = ((rand()%3)+3))==b); grid0.location.row = e; // row 3 -6
+    while((f = ((rand()%3)+6))==c); grid0.location.row = h; // row 7 -8
+
+    g=-1; while(++g == a || g == d); grid0.location.row = c; // row 0 -2
+    h=2; while(++h == b || h == e); grid0.location.row = f; // row 3 -6
+    i=5; while(++i == c || i == f); grid0.location.row = i; // row 7 -8
+    
+    j = (rand()%3); grid0.location.column = j; // column 0 -2
+    while((k = ((rand()%3)  ))==j); grid3.location.column = k; // column 0 -2
+    l=-1; while(++l == j || l == k); grid6.location.column = l;  // column 0 -2
+    
+    m = (rand()%3)+3; grid1.location.column = m; // column 3 -5
+    while((n = ((rand()%3)+3))==m); grid4.location.column = n; // column 3 -5
+    o=2; while(++o == n || o == m); grid7.location.column = o; // column 3 -5
+    
+    p = (rand()%3)+6; grid2.location.column = p; // column 6 -8
+    while((q = ((rand()%3)+6))==p); grid5.location.column = q; // column 6 -8
+    r=5; while(++r == q || r == p); grid8.location.column = r; // column 6 -8
+
+
+    BoxCordinates* box0 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid0,box0);
+    BoxCordinates* box1 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid1,box1);
+    BoxCordinates* box2 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid2,box2);
+    BoxCordinates* box3 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid3,box3);
+    BoxCordinates* box4 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid4,box4);
+    BoxCordinates* box5 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid5,box5);
+    BoxCordinates* box6 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid6,box6);
+    BoxCordinates* box7 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid7,box7);
+    BoxCordinates* box8 = new BoxCordinates; PositionConversion::convertToPositionInBox(grid8,box8);
+
     std::cout << box0->location.box;
     std::cout << box1->location.box;
     std::cout << box2->location.box;
@@ -71,6 +84,16 @@ void SodokuCombinations::CreateListWithRamdomGenerations(){
     std::cout << box6->location.box;
     std::cout << box7->location.box;
     std::cout << box8->location.box;
+    std::cout << " " ;
+    std::cout << box0->location.positionInBox;
+    std::cout << box1->location.positionInBox;
+    std::cout << box2->location.positionInBox;
+    std::cout << box3->location.positionInBox;
+    std::cout << box4->location.positionInBox;
+    std::cout << box5->location.positionInBox;
+    std::cout << box6->location.positionInBox;
+    std::cout << box7->location.positionInBox;
+    std::cout << box8->location.positionInBox;
     std::cout << std::endl;
     delete box0;
     delete box1;
