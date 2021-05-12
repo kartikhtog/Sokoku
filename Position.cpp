@@ -1,5 +1,7 @@
 #include "Position.h"
-static BoxCordinates* PositionConversion::convertToPositionInBox(GridCordinates p, BoxCordinates* b) {
+// static keyword not required, complier already know its static
+// adding static will tell the complier that this function can only be used in this file which not what we want
+BoxCordinates* PositionConversion::convertToPositionInBox(GridCordinates p, BoxCordinates* b) {
     int boxColumnLocation = 0;
     int boxRowLocation = 0;
     if (p.location.column == 0 || p.location.column == 3 || p.location.column == 6 ){
@@ -37,7 +39,7 @@ static BoxCordinates* PositionConversion::convertToPositionInBox(GridCordinates 
     // 3 7 8 9
 };
 
-static int PositionConversion::calculateBoxFromPosition(GridCordinates p){
+int PositionConversion::calculateBoxFromPosition(GridCordinates p){
     if (p.location.column <= 2){
         if (p.location.row <= 2){
             return 0;

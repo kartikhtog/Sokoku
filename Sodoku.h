@@ -34,7 +34,7 @@ class Sodoku{
         void failedLagacyGeneration();
         void FailedLegacyGeneration2();
 
-        char SodokuValueConverter(const SodokuValue s)const;
+        char SodokuValueConverter(const SodokuValue s) const;
         std::ostream& print(ostream& os,const SodokuValue matrix[][Sodoku_Size]) const;
     public:
     Sodoku();

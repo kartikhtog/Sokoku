@@ -11,7 +11,7 @@ using namespace std;
 bool Sodoku::isValueInsertableIntoSolGridCordinatesx(int value,GridCordinates p) {
     if (!rows[p.location.row][value]){
         if (!columns[p.location.column][value]){
-            if (boxes[calculateBoxFromPosition(p)][value]){
+            if (boxes[PositionConversion::calculateBoxFromPosition(p)][value]){
                 return true;
             }
         }
@@ -32,7 +32,7 @@ void  Sodoku::generate() {
 }
 
      
-char Sokoku::SodokuValueConverter(const SodokuValue s)const{
+char Sodoku::SodokuValueConverter(const SodokuValue s) const{
     if (s.value.isValid){
         char r ='x';
         switch(s.value.value){
@@ -65,7 +65,7 @@ std::ostream& Sodoku::print(ostream& os,const SodokuValue matrix[][Sodoku_Size])
         os << "  " << SodokuValueConverter(matrix[4][i]);
         os << "  " << SodokuValueConverter(matrix[5][i]);
         os << " |";
-        os << "  " << SoGridCordinateseConverter(matrix[6][i]);
+        os << "  " << SodokuValueConverter(matrix[6][i]);
         os << "  " << SodokuValueConverter(matrix[7][i]);
         os << "  " << SodokuValueConverter(matrix[8][i]);
         os << " |" << endl;
@@ -268,7 +268,7 @@ void Sodoku::failedLagacyGeneration() {
                 int r = (rand() % 9) +1;
                 int tries = 0;
                 int maxTries = 30;
-                while((solved[i][j].value.isValid || rows[j][r] || columns[i][r] || boxes[calculateBoxFromPosition(p)][r]) && tries < maxTries){
+                while((solved[i][j].value.isValid || rows[j][r] || columns[i][r] || boxes[PositionConversion::calculateBoxFromPosition(p)][r]) && tries < maxTries){
                         r = (rand() % 9) +1;
                         tries++;
                     //  if (tries> (maxTries*2/3)){
@@ -284,7 +284,7 @@ void Sodoku::failedLagacyGeneration() {
                 }
                 columns[i][r] = true;
                 rows[j][r] = true;
-                boxes[calculateBoxFromPosition(p)][r] = true;
+                boxes[PositionConversion::calculateBoxFromPosition(p)][r] = true;
                 solved[i][j].value.value = r;
                 solved[i][j].value.isValid = 1;
 
@@ -305,18 +305,18 @@ void Sodoku::failedLagacyGeneration() {
                     firstcomplement.location.row = randomRow;
                     tries = 0;
                     while ((solved[i][randomRow].value.isValid || randomRow == j
-                    || rows[randomRow][complementValue] || boxes[calculateBoxFromPosition(firstcomplement)][complementValue]) && tries < maxTries ){
+                    || rows[randomRow][complementValue] || boxes[PositionConversion::calculateBoxFromPosition(firstcomplement)][complementValue]) && tries < maxTries ){
                         randomRow = (rand()%9);
                         firstcomplement.location.row = randomRow;
                         tries++;
                     }
                     if (tries < maxTries){
-                        if (calculateBoxFromPosition(p)==calculateBoxFromPosition(firstcomplement)){
+                        if (PositionConversion::calculateBoxFromPosition(p)==PositionConversion::calculateBoxFromPosition(firstcomplement)){
                             CannotBeAddedTobox = true;
                         }
                         rows[randomRow][complementValue] = true;
                         columns[i][complementValue] = true;
-                        boxes[calculateBoxFromPosition(firstcomplement)][complementValue] = true;
+                        boxes[PositionConversion::calculateBoxFromPosition(firstcomplement)][complementValue] = true;
                         solved[i][randomRow].value.value = complementValue;   
                         solved[i][randomRow].value.isValid = 1;
                         //cout << "Inserting "<< complementValue << " at "<< i << randomRow << endl;
@@ -333,20 +333,20 @@ void Sodoku::failedLagacyGeneration() {
                     secondcomplement.location.column = randomColumn;
                     secondcomplement.location.row = j;
                     tries = 0;
-                    while ((solved[randomColumn][j].value.isValid || randomColumn == i || (CannotBeAddedTobox && calculateBoxFromPosition(p)==calculateBoxFromPosition(secondcomplement))
-                    || columns[randomColumn][complementValue] || boxes[calculateBoxFromPosition(secondcomplement)][complementValue]) && (tries < maxTries) )
+                    while ((solved[randomColumn][j].value.isValid || randomColumn == i || (CannotBeAddedTobox && PositionConversion::calculateBoxFromPosition(p)==PositionConversion::calculateBoxFromPosition(secondcomplement))
+                    || columns[randomColumn][complementValue] || boxes[PositionConversion::calculateBoxFromPosition(secondcomplement)][complementValue]) && (tries < maxTries) )
                     {
                         randomColumn = (rand()%9);
                         secondcomplement.location.column = randomColumn;
                         tries++;
                     }
                     if (tries < maxTries){
-                        if (calculateBoxFromPosition(p)==calculateBoxFromPosition(secondcomplement)){
+                        if (PositionConversion::calculateBoxFromPosition(p)==PositionConversion::calculateBoxFromPosition(secondcomplement)){
                             CannotBeAddedTobox = true;
                         }
                         rows[j][complementValue] = true;
                         columns[randomColumn][complementValue] = true;
-                        boxes[calculateBoxFromPosition(secondcomplement)][complementValue] = true;
+                        boxes[PositionConversion::calculateBoxFromPosition(secondcomplement)][complementValue] = true;
                         solved[randomColumn][j].value.value = complementValue;   
                         solved[randomColumn][j].value.isValid = 1;
                         //cout << " inserting "<< complementValue << " at "<< randomColumn << j << endl;
@@ -359,7 +359,7 @@ void Sodoku::failedLagacyGeneration() {
 
 
 
-                    GridCordinatesbox, different and random column and row
+                   //GridCordinatesbox, different and random column and row
                     if (!CannotBeAddedTobox){
                         randomColumn = (rand()%9);
                         randomRow = (rand()%9);
@@ -367,8 +367,8 @@ void Sodoku::failedLagacyGeneration() {
                         thirdcomplement.location.column = randomColumn;
                         thirdcomplement.location.row = randomRow;
                         tries = 0;
-                        while ((solved[randomColumn][randomRow].value.isValid || randomColumn == i || randomRow == j|| calculateBoxFromPosition(p)!=calculateBoxFromPosition(thirdcomplement)
-                        || columns[randomColumn][complementValue] ||rows[randomRow][complementValue]|| boxes[calculateBoxFromPosition(thirdcomplement)][complementValue]) && tries < maxTries )
+                        while ((solved[randomColumn][randomRow].value.isValid || randomColumn == i || randomRow == j|| PositionConversion::calculateBoxFromPosition(p)!=PositionConversion::calculateBoxFromPosition(thirdcomplement)
+                        || columns[randomColumn][complementValue] ||rows[randomRow][complementValue]|| boxes[PositionConversion::calculateBoxFromPosition(thirdcomplement)][complementValue]) && tries < maxTries )
                         {
                             randomColumn = (rand()%9);
                             randomRow = (rand()%9);
@@ -379,7 +379,7 @@ void Sodoku::failedLagacyGeneration() {
                         if (tries < maxTries){
                             rows[randomRow][complementValue] = true;
                             columns[randomColumn][complementValue] = true;
-                            boxes[calculateBoxFromPosition(thirdcomplement)][complementValue] = true;
+                            boxes[PositionConversion::calculateBoxFromPosition(thirdcomplement)][complementValue] = true;
                             solved[randomColumn][randomRow].value.value = complementValue;   
                             solved[randomColumn][randomRow].value.isValid = 1;
                             //cout << " inserting "<< complementValue << " at "<< randomColumn << randomRow << endl;
