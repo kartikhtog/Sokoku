@@ -12,3 +12,4 @@ int main(){
     sc.SortTheListOfPurmutations();
     return 0;
 }
+

@@ -7,4 +7,8 @@ Should work on linux or macOS but was only tested on windows with gcc using c++1
 
 2) To Run : Output/a.exe
 
+or) build and run:  ./makefile.sh && Output/a.exe
+
 3) Run test: ./runTests.sh
+
+Improvements: Managed2DArray needs a .h file.
