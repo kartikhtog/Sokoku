@@ -1,5 +1,5 @@
 #include <iostream>
-
+/*To do: create a .h file*/
 template <typename t>
 class Managed2DArray{
     private:
@@ -103,7 +103,10 @@ class Managed2DArray{
         }
         void sortListOfArray(){
             MergeSort(0,numberOfArrays-1);
-        }   
+        }
+        // requires the list to be sorted
+        void RemoveDuplicates(){
+        }
 };
 
 /*
