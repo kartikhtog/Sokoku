@@ -9,5 +9,6 @@ int main(){
     //std::cout << "test";
     SodokuCombinations sc;
     sc.CreateListsWithRamdomGenerations();
+    sc.SortTheListOfPurmutations();
     return 0;
 }

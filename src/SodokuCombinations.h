@@ -3,12 +3,14 @@
 
 #ifndef SODOKU_COMBINATIONS_H
 #define SODOKU_COMBINATIONS_H
+#define maxPurmutationToTry 1000
 
 class SodokuCombinations{
     private:
         SodokuValue solved[Sodoku_Size][Sodoku_Size];
         time_t now;
-        void CreateListWithRamdomGenerations();
+        int allPurmutations[maxPurmutationToTry][9];
+        void CreateListWithRamdomGenerations(int iteration);
     public:
         SodokuCombinations();
     /**
@@ -27,6 +29,7 @@ class SodokuCombinations{
         /// output this lists.
      */
         void CreateListsWithRamdomGenerations();
+        void SortTheListOfPurmutations();
         void deleteMeLater();
 };
 
