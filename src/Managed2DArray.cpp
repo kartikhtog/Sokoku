@@ -106,6 +106,82 @@ class Managed2DArray{
         }
         // requires the list to be sorted
         void RemoveDuplicates(){
+            std::cout << "removing duplicates" << std::endl;
+            int indexOfCurrentArray = 0;
+            int numOfOrginials = 0;
+            int comparingIndex = 1;
+            if (numberOfArrays>1) {
+                while(indexOfCurrentArray != numberOfArrays -1){
+                    // std::cout << "iterating through outer array" << std::endl;
+                    numOfOrginials++;
+                    //int* currentArray =  array[indexOfCurrentArray];
+                    // bool deletedPurmutation = false;
+                    while (ComparePurmutation(indexOfCurrentArray,comparingIndex,array)==0) {// currentArray == array[comparingIndex]) {
+                        // std::cout << "going to delete an array" << std::endl;
+                        delete []array[comparingIndex];
+                        // std::cout << "part 1" << std::endl;
+                        array[comparingIndex] = nullptr;
+                        // std::cout << "part 2" << std::endl;
+                        comparingIndex++; // need to increase outside of loop as well
+                        // std::cout << "part 3" << std::endl;
+                        // deletedPurmutation = true;
+                        // std::cout << "part 4" << std::endl;
+                    }
+                    // if (deletedPurmutation) {
+                    //     std::cout << "part 5" << std::endl;
+                    // }
+                    // if (!deletedPurmutation) {
+                        
+                    // }
+                    indexOfCurrentArray = comparingIndex;
+                    comparingIndex++;
+                   // comparingIndex;
+                }
+            }
+            std::cout << "going to copy to new array" << std::endl;
+            /// copy to new array
+            t** newArray = new t*[numOfOrginials];
+            std::cout << "numOfOrginals is " << numOfOrginials << std::endl;
+            int indexForNewArray = 0;
+            int indexForOriginalArray = 0;
+            while(indexForNewArray < numOfOrginials) {
+                // std::cout << "1) Outerloop: ";
+                newArray[indexForNewArray] = new t[sizeOfArray];
+                // std::cout << " inner array allocation done" << std::endl;
+                for(int i = 0; i < sizeOfArray; i++) {
+                    // std::cout << "coping inner array";
+                    newArray[indexForNewArray][i] = array[indexForOriginalArray][i];
+                    // std::cout << "done" << std::endl;
+                }
+
+                // std::cout << "2) Deleting ";
+                delete []array[indexForOriginalArray];
+                array[indexForOriginalArray] = nullptr;
+                // std::cout << " done" << std::endl;
+                indexForOriginalArray++;
+                while(indexForOriginalArray < numberOfArrays && array[indexForOriginalArray]==nullptr){indexForOriginalArray++;};
+                indexForNewArray++;
+                // std::cout << "Forwarding index" << std::endl;
+            }
+            std::cout << "coping done" << std::endl;
+            delete []array;
+            array = nullptr;
+            array = newArray;
+            numberOfArrays = numOfOrginials;
+
+            /// store current array
+            /// compare current array to next
+            /// if current array is same array delete next array ... and set as null
+            /// count not delete array
+            /// if next array is not deleted move to next array
+            /// at the end, copy element to new array.
+
+        }
+        int getNumberOfArrays() {
+            return numberOfArrays;
+        }
+        int getSizeOfArrays() {
+            return sizeOfArray;
         }
 };
 

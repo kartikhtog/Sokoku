@@ -3,7 +3,7 @@
 
 #ifndef SODOKU_COMBINATIONS_H
 #define SODOKU_COMBINATIONS_H
-#define maxPurmutationToTry 1000
+#define maxPurmutationToTry 50000
 
 class SodokuCombinations{
     private:

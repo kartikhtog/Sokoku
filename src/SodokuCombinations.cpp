@@ -130,5 +130,7 @@ void SodokuCombinations::SortTheListOfPurmutations() {
         }
     }
     m.sortListOfArray();
-    m.print();
+    //m.print();
+    m.RemoveDuplicates();
+    // m.print();
 }
