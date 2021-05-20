@@ -2,11 +2,11 @@
 #include <math.h>
 #include <time.h>
 #include "Position.h"
+#include "Managed2DArray.h"
 #include "SodokuDefinations.h"
 #include "SodokuCombinations.h"
-#include "Managed2DArray.cpp"
 
-SodokuCombinations::SodokuCombinations(){
+SodokuCombinations::SodokuCombinations() {
     time(&now);//the number of seconds elapsed since January 1, 1970
     srand(now);// set seed
 }

@@ -1,5 +1,6 @@
 #include <time.h>
 #include "SodokuDefinations.h"
+#include "Managed2DArray.h"
 
 #ifndef SODOKU_COMBINATIONS_H
 #define SODOKU_COMBINATIONS_H
@@ -10,6 +11,7 @@ class SodokuCombinations{
         SodokuValue solved[Sodoku_Size][Sodoku_Size];
         time_t now;
         int allPurmutations[maxPurmutationToTry][9];
+        Managed2DArray<int> managedArray = Managed2DArray<int>(maxPurmutationToTry,Sodoku_Size);
         void CreateListWithRamdomGenerations(int iteration);
     public:
         SodokuCombinations();
