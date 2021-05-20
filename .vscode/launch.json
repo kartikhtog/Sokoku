@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "C:\\Users\\karti\\Google Drive\\this week\\sodoku\\a.exe",
+            "program": "C:\\Users\\karti\\Google Drive\\this week\\sodoku\\Output\\a.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

@@ -1,15 +1,17 @@
 #include <time.h>
 #include "SodokuDefinations.h"
+#include "Managed2DArray.h"
 
 #ifndef SODOKU_COMBINATIONS_H
 #define SODOKU_COMBINATIONS_H
-#define maxPurmutationToTry 1000
+#define maxPurmutationToTry 50000
 
 class SodokuCombinations{
     private:
         SodokuValue solved[Sodoku_Size][Sodoku_Size];
         time_t now;
-        int allPurmutations[maxPurmutationToTry][9];
+        ///To do: ideally this should be dependency injected but its not a big a deal.
+        Managed2DArray<int> managedArray = Managed2DArray<int>(maxPurmutationToTry,Sodoku_Size);
         void CreateListWithRamdomGenerations(int iteration);
     public:
         SodokuCombinations();
@@ -20,7 +22,9 @@ class SodokuCombinations{
         /// 9 numbers represent the boxes, number represent the position on the box
         /// sort these permuations
         /// remove duplicates
-        /// make lists of 9 lists choosing all the subsets  9 C _
+        /// make lists of 9 lists choosing all the subsets  9 C _ : 
+        /// may 19: 2021 update though: We only need to generate one... we should just try random 9 at a time
+        /// Maybe find a set that is not a valid first
         /// ... for each check if its valid
         /// out put valid list
         /// to check the if its valid 
@@ -30,7 +34,6 @@ class SodokuCombinations{
      */
         void CreateListsWithRamdomGenerations();
         void SortTheListOfPurmutations();
-        void deleteMeLater();
 };
 
 #endif

@@ -2,11 +2,11 @@
 #include <math.h>
 #include <time.h>
 #include "Position.h"
+#include "Managed2DArray.h"
 #include "SodokuDefinations.h"
 #include "SodokuCombinations.h"
-#include "Managed2DArray.cpp"
 
-SodokuCombinations::SodokuCombinations(){
+SodokuCombinations::SodokuCombinations() {
     time(&now);//the number of seconds elapsed since January 1, 1970
     srand(now);// set seed
 }
@@ -101,15 +101,15 @@ void SodokuCombinations::CreateListWithRamdomGenerations(int iteration){
     // std::cout << box8->location.positionInBox;
     // std::cout << std::endl;
     
-    allPurmutations[iteration][0] = box0->location.positionInBox;
-    allPurmutations[iteration][1] = box1->location.positionInBox;
-    allPurmutations[iteration][2] = box2->location.positionInBox;
-    allPurmutations[iteration][3] = box3->location.positionInBox;
-    allPurmutations[iteration][4] = box4->location.positionInBox;
-    allPurmutations[iteration][5] = box5->location.positionInBox;
-    allPurmutations[iteration][6] = box6->location.positionInBox;
-    allPurmutations[iteration][7] = box7->location.positionInBox;
-    allPurmutations[iteration][8] = box8->location.positionInBox;
+    managedArray.insert(box0->location.positionInBox, iteration, 0);
+    managedArray.insert(box1->location.positionInBox, iteration, 1);
+    managedArray.insert(box2->location.positionInBox, iteration, 2);
+    managedArray.insert(box3->location.positionInBox, iteration, 3);
+    managedArray.insert(box4->location.positionInBox, iteration, 4);
+    managedArray.insert(box5->location.positionInBox, iteration, 5);
+    managedArray.insert(box6->location.positionInBox, iteration, 6);
+    managedArray.insert(box7->location.positionInBox, iteration, 7);
+    managedArray.insert(box8->location.positionInBox, iteration, 8);
 
     delete box0;
     delete box1;
@@ -123,12 +123,11 @@ void SodokuCombinations::CreateListWithRamdomGenerations(int iteration){
 }
 
 void SodokuCombinations::SortTheListOfPurmutations() {
-    Managed2DArray<int> m = Managed2DArray<int>(maxPurmutationToTry,Sodoku_Size);
-    for(int i = 0;i<maxPurmutationToTry;i++){
-        for(int j =0; j< Sodoku_Size;j++){
-            m.insert(allPurmutations[i][j],i,j);
-        }
-    }
-    m.sortListOfArray();
-    m.print();
+    managedArray.sortListOfArray();
+    //m.print();
+    managedArray.RemoveDuplicates();
+    // m.print();
+}
+
+void FindFirst9RandomSetsThatAreUnique(){
 }

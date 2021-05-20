@@ -11,4 +11,4 @@ or) build and run:  ./makefile.sh && Output/a.exe
 
 3) Run test: ./runTests.sh
 
-Improvements: Managed2DArray needs a .h file.
+Improvements: There is a bug in Managed2DArray removing duplicate which can cause seg fault.

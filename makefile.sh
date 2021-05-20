@@ -9,5 +9,5 @@ g++ -c -Wall src/Position.cpp -o Output/Position.o
 g++ -c -Wall src/main.cpp -o Output/main.o
 # links all the files together
 #-o location and name of output file
-g++ -o Output/a.exe Output/SodokuCombinations.o Output/Sodoku.o Output/Position.o Output/main.o
+g++ -o Output/a.exe Output/SodokuCombinations.o Output/Sodoku.o Output/Position.o  Output/main.o
 echo "done"
