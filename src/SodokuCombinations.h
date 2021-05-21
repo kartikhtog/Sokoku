@@ -12,7 +12,7 @@ class SodokuCombinations{
         time_t now;
         ///To do: ideally this should be dependency injected but its not a big a deal.
         Managed2DArray<int> managedArray = Managed2DArray<int>(maxPurmutationToTry,Sodoku_Size);
-        void CreateListWithRamdomGenerations(int iteration);
+        void createListWithRamdomGenerations(int iteration);
     public:
         SodokuCombinations();
     /**
@@ -32,8 +32,8 @@ class SodokuCombinations{
         /// this will construct a proper solution
         /// output this lists.
      */
-        void CreateListsWithRamdomGenerations();
-        void SortTheListOfPurmutations();
+        void createListsWithRamdomGenerations();
+        void sortTheListOfPurmutations();
 };
 
 #endif

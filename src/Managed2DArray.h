@@ -1,7 +1,7 @@
 #include <iostream>
 #ifndef MANAGED_2D_ARRAY_H
 #define MANAGED_2D_ARRAY_H
-/*To do: create a .h file*/
+/*Note: Override == for classes to get the proper functionality*/
 template <typename t>
 class Managed2DArray{
     private:
@@ -10,9 +10,10 @@ class Managed2DArray{
         int sizeOfArray;
         void printArray(t* innderArray);
         
-        int ComparePurmutation(int indexOfFirst, int indexOfSecond,t** array);
+        int compareTwoArrays(int indexOfFirst, int indexOfSecond,t** array);
         t** returnArray();
         void MergeSort(int beginIndex, int endIndex);
+        bool areArrayEqual(int indexOfFirst, int indexOfSecond);
     public:
         Managed2DArray(int numberOfArrays, int sizeOfArray);
         void print();
@@ -22,8 +23,9 @@ class Managed2DArray{
         void sortListOfArray();
         // requires the list to be sorted
         void RemoveDuplicates();
-        int getNumberOfArrays() ;
-        int getSizeOfArrays() ;
+        int getNumberOfArrays();
+        int getSizeOfArrays();
+        void findUnquieSet(int numberOfUniqueSetss);
 };
 
 /*
@@ -47,6 +49,41 @@ Quicksort	O(n*log(n))	O(n*log(n))	O(n^2)	Constant	Stable	Randomly picking a pivo
  https://stackoverflow.com/questions/8752837/undefined-reference-to-template-class-constructor
  But it could mean the same functions are compiled many times, once in each translation unit. This is not a big problem, as the linker will correctly ignore the duplicate implementations. But it might slow down the compilation a little.
 */
+
+template <typename t>
+void Managed2DArray<t>::findUnquieSet(int numberOfUniqueSets){
+    /**
+     * keep going through random sets until you find 9 that are unique...
+     * Do we know anything about the underlining arrays .... number are unique
+    */
+   /**
+    * Separate the all of the number using indexes 9! for array size of 9 is doable .... 
+    * create a tree ... is going down the tree while all the selected nodes are different ....if no unique number can be mathed nth deep into the tree ... start at the top of the tree again.
+    * spit out the paths ... delete the tree
+    * 
+    * 
+   */
+}
+template <typename t>
+bool Managed2DArray<t>::areArrayEqual(int indexOfFirst, int indexOfSecond) {
+    t* arr1 = array[indexOfFirst];
+    t* arr2 = array[indexOfSecond];
+    int innerIndex = 0;
+    while(innerIndex < sizeOfArray){
+        if (arr1[innerIndex] != arr2[innerIndex]) {
+            return false;
+        }
+        else if (innerIndex == sizeOfArray - 1) {
+            return true;
+        }
+        innerIndex++;
+    }
+    return false;
+    /* alternatively
+    return (CompareTwoArrays(indexOfFirst,indexOfSecond,array) == 0)
+    */
+}
+
 template <typename t>
 void Managed2DArray<t>::printArray(t* innderArray){
     for(int j = 0; j < sizeOfArray;j++){
@@ -55,7 +92,7 @@ void Managed2DArray<t>::printArray(t* innderArray){
 }
 
 template <typename t>      
-int Managed2DArray<t>::ComparePurmutation(int indexOfFirst, int indexOfSecond,t** array){
+int Managed2DArray<t>::compareTwoArrays(int indexOfFirst, int indexOfSecond,t** array){
     t* firstArray = array[indexOfFirst];
     t* secondArray = array[indexOfSecond];
     int index = 0;
@@ -101,7 +138,7 @@ void Managed2DArray<t>::MergeSort(int beginIndex, int endIndex){
             else if (j > endIndex -beginIndex) {
                 array[k++] = copyArray[i++];
             }
-            else if ( ComparePurmutation(i,j,copyArray)>=0){
+            else if ( compareTwoArrays(i,j,copyArray)>=0){
                 array[k++] = copyArray[j++];
             } else {
                 array[k++] = copyArray[i++];
@@ -176,7 +213,7 @@ void Managed2DArray<t>::RemoveDuplicates(){
             numOfOrginials++;
             //int* currentArray =  array[indexOfCurrentArray];
             // bool deletedPurmutation = false;
-            while (ComparePurmutation(indexOfCurrentArray,comparingIndex,array)==0) {// currentArray == array[comparingIndex]) {
+            while (compareTwoArrays(indexOfCurrentArray,comparingIndex,array)==0) {// currentArray == array[comparingIndex]) {
                 // std::cout << "going to delete an array" << std::endl;
                 delete []array[comparingIndex];
                 // std::cout << "part 1" << std::endl;

@@ -8,8 +8,8 @@ int main(){
     //s.printSolvedMatrix(std::cout);//ostream);
     //std::cout << "test";
     SodokuCombinations sc;
-    sc.CreateListsWithRamdomGenerations();
-    sc.SortTheListOfPurmutations();
+    sc.createListsWithRamdomGenerations();
+    sc.sortTheListOfPurmutations();
     return 0;
 }
 
