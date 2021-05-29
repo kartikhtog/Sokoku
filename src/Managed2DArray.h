@@ -52,6 +52,7 @@ Quicksort	O(n*log(n))	O(n*log(n))	O(n^2)	Constant	Stable	Randomly picking a pivo
 
 template <typename t>
 void Managed2DArray<t>::findUnquieSet(int numberOfUniqueSets){
+    
     /**
      * keep going through random sets until you find 9 that are unique...
      * Do we know anything about the underlining arrays .... number are unique
@@ -63,6 +64,14 @@ void Managed2DArray<t>::findUnquieSet(int numberOfUniqueSets){
     * 
     * 
    */
+
+    // create tree ... using t specific tree
+    Node *root = new Node();
+    for(int i =0;i < numberOfArrays;i++){
+        root->insertSequence(array[i],sizeOfArray);
+    }
+
+
 }
 template <typename t>
 bool Managed2DArray<t>::areArrayEqual(int indexOfFirst, int indexOfSecond) {
