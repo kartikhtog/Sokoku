@@ -12,3 +12,7 @@ or) build and run:  ./makefile.sh && Output/a.exe
 
 Improvements: There is a bug in Managed2DArray removing duplicate which can cause seg fault.
 
+To do: 
+
+1) need to update makefile.sh to include Tree.cpp
+2) write down step to finish project in this readme.md
