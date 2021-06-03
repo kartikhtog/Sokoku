@@ -11,13 +11,13 @@ SodokuCombinations::SodokuCombinations() {
     srand(now);// set seed
 }
    
-void SodokuCombinations::CreateListsWithRamdomGenerations() {
+void SodokuCombinations::createListsWithRamdomGenerations() {
     for (int i = 0;i < maxPurmutationToTry; i++){
-        CreateListWithRamdomGenerations(i);
+        createListWithRamdomGenerations(i);
     }
 };
 
-void SodokuCombinations::CreateListWithRamdomGenerations(int iteration){
+void SodokuCombinations::createListWithRamdomGenerations(int iteration){
     // rows
     int a;
     int b;
@@ -122,7 +122,7 @@ void SodokuCombinations::CreateListWithRamdomGenerations(int iteration){
     delete box8;
 }
 
-void SodokuCombinations::SortTheListOfPurmutations() {
+void SodokuCombinations::sortTheListOfPurmutations() {
     managedArray.sortListOfArray();
     //m.print();
     managedArray.RemoveDuplicates();

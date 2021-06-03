@@ -32,7 +32,7 @@ void  Sodoku::generate() {
 }
 
      
-char Sodoku::SodokuValueConverter(const SodokuValue s) const{
+char Sodoku::sodokuValueConverter(const SodokuValue s) const{
     if (s.value.isValid){
         char r ='x';
         switch(s.value.value){
@@ -57,17 +57,17 @@ std::ostream& Sodoku::print(ostream& os,const SodokuValue matrix[][Sodoku_Size])
     os << " ________________________________"<< endl;
     for (int i = 0;i < Sodoku_Size;i++){
         os << "|";
-        os << "  " << SodokuValueConverter(matrix[0][i]);
-        os << "  " << SodokuValueConverter(matrix[1][i]);
-        os << "  " << SodokuValueConverter(matrix[2][i]);
+        os << "  " << sodokuValueConverter(matrix[0][i]);
+        os << "  " << sodokuValueConverter(matrix[1][i]);
+        os << "  " << sodokuValueConverter(matrix[2][i]);
         os << " |";
-        os << "  " << SodokuValueConverter(matrix[3][i]);
-        os << "  " << SodokuValueConverter(matrix[4][i]);
-        os << "  " << SodokuValueConverter(matrix[5][i]);
+        os << "  " << sodokuValueConverter(matrix[3][i]);
+        os << "  " << sodokuValueConverter(matrix[4][i]);
+        os << "  " << sodokuValueConverter(matrix[5][i]);
         os << " |";
-        os << "  " << SodokuValueConverter(matrix[6][i]);
-        os << "  " << SodokuValueConverter(matrix[7][i]);
-        os << "  " << SodokuValueConverter(matrix[8][i]);
+        os << "  " << sodokuValueConverter(matrix[6][i]);
+        os << "  " << sodokuValueConverter(matrix[7][i]);
+        os << "  " << sodokuValueConverter(matrix[8][i]);
         os << " |" << endl;
         if (i != 2 && i != 5 && i != 8){
             os << "|                                |" << endl;

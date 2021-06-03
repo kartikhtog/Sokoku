@@ -32,7 +32,7 @@ class Sodoku{
 
         void generate();
 
-        char SodokuValueConverter(const SodokuValue s) const;
+        char sodokuValueConverter(const SodokuValue s) const;
         std::ostream& print(ostream& os,const SodokuValue matrix[][Sodoku_Size]) const;
     public:
     Sodoku();
