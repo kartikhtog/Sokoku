@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Tree.h"
 #ifndef MANAGED_2D_ARRAY_H
 #define MANAGED_2D_ARRAY_H
 /*Note: Override == for classes to get the proper functionality*/
@@ -66,7 +67,7 @@ void Managed2DArray<t>::findUnquieSet(int numberOfUniqueSets){
    */
 
     // create tree ... using t specific tree
-    Node *root = new Node();
+    Node *tree = new Node();
     for(int i =0;i < numberOfArrays;i++){
         root->insertSequence(array[i],sizeOfArray);
     }
