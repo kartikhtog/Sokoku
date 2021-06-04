@@ -3,10 +3,10 @@
 #include <queue>
 #include <stack>
 using namespace std;
-// Node for sodozu generation 1-9 number... to expend change to other objects, expand Sodoku_Size to a upper range.
-/**
- * A Node class
- */
+
+#ifndef TREE_H
+#define TREE_H
+
 template <typename t>
 class Node {
     map<t, Node*> children;
@@ -57,3 +57,5 @@ class Node {
             children[child->data] = child;
         }
 };
+
+#endif
